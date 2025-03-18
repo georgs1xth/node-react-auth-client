@@ -37,12 +37,13 @@ const App: FC = () => {
   return (
     <div>
       <h1>{store.isAuth ? `Пользователь авторизован ${store.user.email}` : "АВТОРИЗУЙТЕСЬ"}</h1>
+      <h1>{store.user.isActivated ? 'Аккаунт активирован' : 'Подтвердите аккаунт!'}</h1>
       <button onClick={() => {store.logout()}}>Выйти</button>
       <div>
         <button onClick={getUsers}>Получить пользователей</button>
       </div>
       {users.map(user => (
-        <div>
+        <div key={user.email}>
           {user.id}
           {user.email}
           {user.isActivated && "Activated"}
